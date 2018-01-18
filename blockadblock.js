@@ -238,13 +238,22 @@
 	BlockAdBlock.prototype.onNotDetected = function(fn) {
 		return this.on(false, fn);
 	};
-	
+
 	window.BlockAdBlock = BlockAdBlock;
-	
-	if(window.blockAdBlock === undefined) {
-		window.blockAdBlock = new BlockAdBlock({
-			checkOnLoad: true,
-			resetOnEnd: true
-		});
-	}
+
+    if(typeof define === "function" && define.amd) {
+        define('BlockAdBlock', function(){
+            return BlockAdBlock;
+        });
+    } else if(typeof module === "object" && module.exports) {
+        module.exports = BlockAdBlock;
+    } else {
+        if(window.blockAdBlock === undefined) {
+            window.blockAdBlock = new BlockAdBlock({
+                checkOnLoad: true,
+                resetOnEnd: true
+            });
+        }
+    }
+
 })(window);
