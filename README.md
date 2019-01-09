@@ -60,17 +60,17 @@ if(typeof blockAdBlock === 'undefined') {
 
 // AMD
 require(['BlockAdBlock'], function(BlockAdBlock) {
-    let blockAdBlock = new BlockAdBlock({
-        checkOnLoad: true,
-        resetOnEnd: true
-    });
+	let blockAdBlock = new BlockAdBlock({
+		checkOnLoad: true,
+		resetOnEnd: true
+	});
 })
 
 // CommonJS
 let BlockAdBlock = require('blockadblock');
 let blockAdBlock = new BlockAdBlock({
-   checkOnLoad: true,
-   resetOnEnd: true
+	checkOnLoad: true,
+	resetOnEnd: true
 });
 
 // Change the options
