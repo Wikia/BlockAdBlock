@@ -91,12 +91,36 @@
 		}
 	};
 	BlockAdBlock.prototype._destroyBait = function() {
-		window.document.body.removeChild(this._var.bait);
+		this._getBody().removeChild(this._var.bait);
 		this._var.bait = null;
 
 		if(this._options.debug === true) {
 			this._log('_destroyBait', 'Bait has been removed');
 		}
+	};
+
+	BlockAdBlock.prototype._getBody = function() {
+		if (!!this._getBody()) {
+			return this._getBody();
+		}
+
+		var getAttribute = function () {
+			return null;
+		};
+
+		var removeChild = function () {
+			return null;
+		};
+
+		var appendChild = function () {
+			return {};
+		};
+
+		return {
+			getAttribute: getAttribute(),
+			removeChild: removeChild(),
+			appendChild: appendChild()
+		};
 	};
 
 	BlockAdBlock.prototype.check = function(loop) {
@@ -143,7 +167,7 @@
 			this._creatBait();
 		}
 
-		if(window.document.body.getAttribute('abp') !== null
+		if(this._getBody().getAttribute('abp') !== null
 		|| this._var.bait.offsetParent === null
 		|| this._var.bait.offsetHeight == 0
 		|| this._var.bait.offsetLeft == 0
